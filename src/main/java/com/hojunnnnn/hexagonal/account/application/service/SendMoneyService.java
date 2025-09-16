@@ -6,13 +6,12 @@ import com.hojunnnnn.hexagonal.account.application.port.out.AccountLock;
 import com.hojunnnnn.hexagonal.account.application.port.out.LoadAccountPort;
 import com.hojunnnnn.hexagonal.account.application.port.out.UpdateAccountStatePort;
 import com.hojunnnnn.hexagonal.account.domain.Account;
-import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
-public class SendMoneyService implements SendMoneyUseCase {
+class SendMoneyService implements SendMoneyUseCase {
 
     private final LoadAccountPort loadAccountPort;
     private final AccountLock accountLock;
