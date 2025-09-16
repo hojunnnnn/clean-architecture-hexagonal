@@ -4,6 +4,7 @@ import com.hojunnnnn.hexagonal.account.domain.Account;
 import com.hojunnnnn.hexagonal.account.domain.Money;
 import com.hojunnnnn.hexagonal.common.SelfValidating;
 import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
@@ -18,6 +19,7 @@ public class SendMoneyCommand extends SelfValidating<SendMoneyCommand> {
     @NotNull
     private final Money money;
 
+    @Builder
     public SendMoneyCommand(
         Account.AccountId sourceAccountId,
         Account.AccountId targetAccountId,
