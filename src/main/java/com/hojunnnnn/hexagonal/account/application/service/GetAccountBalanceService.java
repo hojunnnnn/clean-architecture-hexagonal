@@ -5,9 +5,11 @@ import com.hojunnnnn.hexagonal.account.application.port.out.LoadAccountPort;
 import com.hojunnnnn.hexagonal.account.domain.Account;
 import com.hojunnnnn.hexagonal.account.domain.Money;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Service
 @RequiredArgsConstructor
 class GetAccountBalanceService implements GetAccountBalanceQuery {
 
