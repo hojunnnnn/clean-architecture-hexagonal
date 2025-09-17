@@ -1,9 +1,11 @@
 package com.hojunnnnn.hexagonal.account.domain;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigInteger;
 
+@Getter
 @RequiredArgsConstructor
 public class Money {
 
@@ -20,6 +22,10 @@ public class Money {
 
     public static Money add(Money a, Money b) {
         return new Money(a.amount.add(b.amount));
+    }
+
+    public static Money subtract(Money a, Money b) {
+        return new Money(a.amount.subtract(b.amount));
     }
 
     public Money negate() {

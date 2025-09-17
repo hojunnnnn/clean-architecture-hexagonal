@@ -5,6 +5,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+@Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Account {
 
@@ -70,7 +71,7 @@ public class Account {
         return Optional.ofNullable(this.id);
     }
 
-
+    @Getter
     @RequiredArgsConstructor
     public static class AccountId {
 

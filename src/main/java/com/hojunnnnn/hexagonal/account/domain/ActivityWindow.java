@@ -1,7 +1,10 @@
 package com.hojunnnnn.hexagonal.account.domain;
 
+import lombok.Getter;
+
 import java.util.List;
 
+@Getter
 public class ActivityWindow {
 
     private final List<Activity> activities;

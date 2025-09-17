@@ -7,9 +7,11 @@ import com.hojunnnnn.hexagonal.account.application.port.out.LoadAccountPort;
 import com.hojunnnnn.hexagonal.account.application.port.out.UpdateAccountStatePort;
 import com.hojunnnnn.hexagonal.account.domain.Account;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
+@Transactional
 @RequiredArgsConstructor
 class SendMoneyService implements SendMoneyUseCase {
 
