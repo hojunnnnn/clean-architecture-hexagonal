@@ -1,11 +1,13 @@
 package com.hojunnnnn.hexagonal.account.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigInteger;
 
 @Getter
+@EqualsAndHashCode
 @RequiredArgsConstructor
 public class Money {
 
