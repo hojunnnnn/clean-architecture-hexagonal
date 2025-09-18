@@ -35,12 +35,14 @@ public class Account {
     }
 
     public boolean deposit(Money money, AccountId sourceAccountId) {
-        Activity deposit = new Activity(
-            this.id,
-            sourceAccountId,
-            this.id,
-            LocalDateTime.now(),
-            money);
+        Activity deposit = Activity.builder()
+            .ownerAccountId(this.id)
+            .sourceAccountId(sourceAccountId)
+            .targetAccountId(this.id)
+            .timestamp(LocalDateTime.now())
+            .money(money)
+            .build();
+
         this.activityWindow.addActivity(deposit);
         return true;
     }
@@ -50,12 +52,14 @@ public class Account {
             return false;
         }
 
-        Activity withdrawal = new Activity(
-            this.id,
-            this.id,
-            targetAccountId,
-            LocalDateTime.now(),
-            money);
+        Activity withdrawal = Activity.builder()
+            .ownerAccountId(this.id)
+            .sourceAccountId(this.id)
+            .targetAccountId(targetAccountId)
+            .timestamp(LocalDateTime.now())
+            .money(money)
+            .build();
+
         this.activityWindow.addActivity(withdrawal);
         return true;
     }

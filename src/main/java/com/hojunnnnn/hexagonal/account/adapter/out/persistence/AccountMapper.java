@@ -32,24 +32,26 @@ class AccountMapper {
         List<Activity> mappedActivities = new ArrayList<>();
 
         for (ActivityEntity activity : activities) {
-            mappedActivities.add(new Activity(
-                new Activity.ActivityId(activity.getId()),
-                new Account.AccountId(activity.getOwnerAccountId()),
-                new Account.AccountId(activity.getSourceAccountId()),
-                new Account.AccountId(activity.getTargetAccountId()),
-                activity.getTimestamp(),
-                Money.of(activity.getAmount())));
+            mappedActivities.add(Activity.builder()
+                    .id(new Activity.ActivityId(activity.getId()))
+                    .ownerAccountId(new Account.AccountId(activity.getOwnerAccountId()))
+                    .sourceAccountId(new Account.AccountId(activity.getSourceAccountId()))
+                    .targetAccountId(new Account.AccountId(activity.getTargetAccountId()))
+                    .timestamp(activity.getTimestamp())
+                    .money(Money.of(activity.getAmount()))
+                .build());
         }
         return new ActivityWindow(mappedActivities);
     }
 
     ActivityEntity mapToJpaEntity(Activity activity) {
-        return new ActivityEntity(
-            activity.getId() == null ? null : activity.getId().getValue(),
-            activity.getTimestamp(),
-            activity.getOwnerAccountId().getValue(),
-            activity.getSourceAccountId().getValue(),
-            activity.getTargetAccountId().getValue(),
-            activity.getMoney().getAmount().longValue());
+        return ActivityEntity.builder()
+            .id(activity.getId() == null ? null : activity.getId().getValue())
+            .timestamp(activity.getTimestamp())
+            .ownerAccountId(activity.getOwnerAccountId().getValue())
+            .sourceAccountId(activity.getSourceAccountId().getValue())
+            .targetAccountId(activity.getTargetAccountId().getValue())
+            .amount(activity.getMoney().getAmount().longValue())
+            .build();
     }
 }

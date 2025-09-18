@@ -1,6 +1,6 @@
 package com.hojunnnnn.hexagonal.account.application.service;
 
-import com.hojunnnnn.hexagonal.account.application.port.in.SendMoneyCommand;
+import com.hojunnnnn.hexagonal.account.application.port.in.SendMoneyRequest;
 import com.hojunnnnn.hexagonal.account.application.port.out.AccountLock;
 import com.hojunnnnn.hexagonal.account.application.port.out.LoadAccountPort;
 import com.hojunnnnn.hexagonal.account.application.port.out.UpdateAccountStatePort;
@@ -49,12 +49,12 @@ class SendMoneyServiceTest {
         givenDepositWillSucceed(targetAccount);
 
 
-        SendMoneyCommand command = new SendMoneyCommand(
+        SendMoneyRequest request = new SendMoneyRequest(
             sourceAccountId,
             targetAccountId,
             Money.of(300L));
 
-        boolean success = sendMoneyService.sendMoney(command);
+        boolean success = sendMoneyService.sendMoney(request);
 
         assertThat(success).isFalse();
 
@@ -75,12 +75,12 @@ class SendMoneyServiceTest {
 
         Money money = Money.of(500L);
 
-        SendMoneyCommand command = new SendMoneyCommand(
+        SendMoneyRequest request = new SendMoneyRequest(
             sourceAccount.getId().get(),
             targetAccount.getId().get(),
             money);
 
-        boolean success = sendMoneyService.sendMoney(command);
+        boolean success = sendMoneyService.sendMoney(request);
 
         assertThat(success).isTrue();
 

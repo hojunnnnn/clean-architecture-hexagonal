@@ -1,11 +1,13 @@
 package com.hojunnnnn.hexagonal.account.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Getter
+@Builder
 @RequiredArgsConstructor
 public class Activity {
 
@@ -16,19 +18,6 @@ public class Activity {
     private final LocalDateTime timestamp;
     private final Money money;
 
-    public Activity(
-        Account.AccountId ownerAccountId,
-        Account.AccountId sourceAccountId,
-        Account.AccountId targetAccountId,
-        LocalDateTime timestamp,
-        Money money) {
-        this.id = null;
-        this.ownerAccountId = ownerAccountId;
-        this.sourceAccountId = sourceAccountId;
-        this.targetAccountId = targetAccountId;
-        this.timestamp = timestamp;
-        this.money = money;
-    }
 
     @Getter
     @RequiredArgsConstructor

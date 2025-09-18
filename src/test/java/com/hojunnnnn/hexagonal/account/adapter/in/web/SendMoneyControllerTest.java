@@ -1,7 +1,7 @@
 package com.hojunnnnn.hexagonal.account.adapter.in.web;
 
+import com.hojunnnnn.hexagonal.account.application.port.in.SendMoneyRequest;
 import com.hojunnnnn.hexagonal.account.application.port.in.SendMoneyCommand;
-import com.hojunnnnn.hexagonal.account.application.port.in.SendMoneyUseCase;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,7 +21,7 @@ class SendMoneyControllerTest {
     private MockMvc mockMvc;
 
     @MockitoBean
-    private SendMoneyUseCase sendMoneyUseCase;
+    private SendMoneyCommand sendMoneyCommand;
 
     @Test
     void testSendMoney() throws Exception {
@@ -31,7 +31,7 @@ class SendMoneyControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk());
 
-        then(sendMoneyUseCase).should()
-            .sendMoney(any(SendMoneyCommand.class));
+        then(sendMoneyCommand).should()
+            .sendMoney(any(SendMoneyRequest.class));
     }
 }
